@@ -1,0 +1,464 @@
+{
+  "features": [
+    {
+      "name": "Age",
+      "label": "Age (years)",
+      "group": "base",
+      "type": "number",
+      "min": 30.0,
+      "max": 86.0,
+      "median": 58.0,
+      "valid_min": 2.0,
+      "valid_max": 114.0
+    },
+    {
+      "name": "Weight",
+      "label": "Weight (kg)",
+      "group": "base",
+      "type": "number",
+      "min": 48.0,
+      "max": 120.0,
+      "median": 74.0,
+      "valid_min": 12.0,
+      "valid_max": 156.0
+    },
+    {
+      "name": "Length",
+      "label": "Height (cm)",
+      "group": "base",
+      "type": "number",
+      "min": 140.0,
+      "max": 188.0,
+      "median": 165.0,
+      "valid_min": 116.0,
+      "valid_max": 212.0
+    },
+    {
+      "name": "Sex",
+      "label": "Sex",
+      "group": "base",
+      "type": "choice",
+      "choices": {
+        "Female": 0,
+        "Male": 1
+      }
+    },
+    {
+      "name": "BMI",
+      "label": "BMI (kg/m²)",
+      "group": "base",
+      "type": "number",
+      "min": 18.115412710007302,
+      "max": 40.90065778377467,
+      "median": 26.775510204081634,
+      "valid_min": 6.722790173123618,
+      "valid_max": 52.293280320658354
+    },
+    {
+      "name": "DM",
+      "label": "Diabetes mellitus",
+      "group": "base",
+      "type": "binary"
+    },
+    {
+      "name": "HTN",
+      "label": "Hypertension",
+      "group": "base",
+      "type": "binary"
+    },
+    {
+      "name": "Current Smoker",
+      "label": "Current smoker",
+      "group": "base",
+      "type": "binary"
+    },
+    {
+      "name": "EX-Smoker",
+      "label": "Ex-smoker",
+      "group": "base",
+      "type": "binary"
+    },
+    {
+      "name": "FH",
+      "label": "Family history of CAD",
+      "group": "base",
+      "type": "binary"
+    },
+    {
+      "name": "Obesity",
+      "label": "Obesity",
+      "group": "base",
+      "type": "binary"
+    },
+    {
+      "name": "CRF",
+      "label": "Chronic renal failure",
+      "group": "base",
+      "type": "binary"
+    },
+    {
+      "name": "CVA",
+      "label": "Stroke (cerebrovascular accident)",
+      "group": "base",
+      "type": "binary"
+    },
+    {
+      "name": "Airway disease",
+      "label": "Airway disease",
+      "group": "base",
+      "type": "binary"
+    },
+    {
+      "name": "Thyroid Disease",
+      "label": "Thyroid disease",
+      "group": "base",
+      "type": "binary"
+    },
+    {
+      "name": "CHF",
+      "label": "Congestive heart failure",
+      "group": "base",
+      "type": "binary"
+    },
+    {
+      "name": "DLP",
+      "label": "Dyslipidemia",
+      "group": "base",
+      "type": "binary"
+    },
+    {
+      "name": "BP",
+      "label": "Blood pressure (mmHg)",
+      "group": "base",
+      "type": "number",
+      "min": 90.0,
+      "max": 190.0,
+      "median": 130.0,
+      "valid_min": 40.0,
+      "valid_max": 240.0
+    },
+    {
+      "name": "PR",
+      "label": "Pulse rate (bpm)",
+      "group": "base",
+      "type": "number",
+      "min": 50.0,
+      "max": 110.0,
+      "median": 70.0,
+      "valid_min": 20.0,
+      "valid_max": 140.0
+    },
+    {
+      "name": "Edema",
+      "label": "Edema",
+      "group": "base",
+      "type": "binary"
+    },
+    {
+      "name": "Weak Peripheral Pulse",
+      "label": "Weak peripheral pulse",
+      "group": "base",
+      "type": "binary"
+    },
+    {
+      "name": "Lung rales",
+      "label": "Lung rales",
+      "group": "base",
+      "type": "binary"
+    },
+    {
+      "name": "Systolic Murmur",
+      "label": "Systolic murmur",
+      "group": "base",
+      "type": "binary"
+    },
+    {
+      "name": "Diastolic Murmur",
+      "label": "Diastolic murmur",
+      "group": "base",
+      "type": "binary"
+    },
+    {
+      "name": "Typical Chest Pain",
+      "label": "Typical chest pain",
+      "group": "base",
+      "type": "binary"
+    },
+    {
+      "name": "Dyspnea",
+      "label": "Shortness of breath (dyspnea)",
+      "group": "base",
+      "type": "binary"
+    },
+    {
+      "name": "Function Class",
+      "label": "Functional class (0-3)",
+      "group": "base",
+      "type": "number",
+      "min": 0.0,
+      "max": 3.0,
+      "median": 0.0,
+      "valid_min": 0.0,
+      "valid_max": 4.5
+    },
+    {
+      "name": "Atypical",
+      "label": "Atypical chest pain",
+      "group": "base",
+      "type": "binary"
+    },
+    {
+      "name": "Nonanginal",
+      "label": "Non-anginal chest pain",
+      "group": "base",
+      "type": "binary"
+    },
+    {
+      "name": "LowTH Ang",
+      "label": "Low-threshold angina",
+      "group": "base",
+      "type": "binary"
+    },
+    {
+      "name": "Q Wave",
+      "label": "Q wave (ECG)",
+      "group": "ecg",
+      "type": "binary"
+    },
+    {
+      "name": "St Elevation",
+      "label": "ST elevation (ECG)",
+      "group": "ecg",
+      "type": "binary"
+    },
+    {
+      "name": "St Depression",
+      "label": "ST depression (ECG)",
+      "group": "ecg",
+      "type": "binary"
+    },
+    {
+      "name": "Tinversion",
+      "label": "T-wave inversion (ECG)",
+      "group": "ecg",
+      "type": "binary"
+    },
+    {
+      "name": "LVH",
+      "label": "Left ventricular hypertrophy (ECG)",
+      "group": "ecg",
+      "type": "binary"
+    },
+    {
+      "name": "Poor R Progression",
+      "label": "Poor R-wave progression (ECG)",
+      "group": "ecg",
+      "type": "binary"
+    },
+    {
+      "name": "BBB",
+      "label": "Bundle branch block (ECG)",
+      "group": "ecg",
+      "type": "choice",
+      "choices": {
+        "None": 0,
+        "LBBB": 1,
+        "RBBB": 2
+      }
+    },
+    {
+      "name": "FBS",
+      "label": "Fasting blood sugar (mg/dL)",
+      "group": "labs",
+      "type": "number",
+      "min": 62.0,
+      "max": 400.0,
+      "median": 98.0,
+      "valid_min": 0.0,
+      "valid_max": 569.0
+    },
+    {
+      "name": "CR",
+      "label": "Creatinine (mg/dL)",
+      "group": "labs",
+      "type": "number",
+      "min": 0.5,
+      "max": 2.2,
+      "median": 1.0,
+      "valid_min": 0.0,
+      "valid_max": 3.0500000000000003
+    },
+    {
+      "name": "TG",
+      "label": "Triglycerides (mg/dL)",
+      "group": "labs",
+      "type": "number",
+      "min": 37.0,
+      "max": 1050.0,
+      "median": 122.0,
+      "valid_min": 0.0,
+      "valid_max": 1556.5
+    },
+    {
+      "name": "LDL",
+      "label": "LDL cholesterol (mg/dL)",
+      "group": "labs",
+      "type": "number",
+      "min": 18.0,
+      "max": 232.0,
+      "median": 100.0,
+      "valid_min": 0.0,
+      "valid_max": 339.0
+    },
+    {
+      "name": "HDL",
+      "label": "HDL cholesterol (mg/dL)",
+      "group": "labs",
+      "type": "number",
+      "min": 15.9,
+      "max": 111.0,
+      "median": 39.0,
+      "valid_min": 0.0,
+      "valid_max": 158.55
+    },
+    {
+      "name": "BUN",
+      "label": "Blood urea nitrogen (mg/dL)",
+      "group": "labs",
+      "type": "number",
+      "min": 6.0,
+      "max": 52.0,
+      "median": 16.0,
+      "valid_min": 0.0,
+      "valid_max": 75.0
+    },
+    {
+      "name": "ESR",
+      "label": "Erythrocyte sedimentation rate (mm/h)",
+      "group": "labs",
+      "type": "number",
+      "min": 1.0,
+      "max": 90.0,
+      "median": 15.0,
+      "valid_min": 0.0,
+      "valid_max": 134.5
+    },
+    {
+      "name": "HB",
+      "label": "Hemoglobin (g/dL)",
+      "group": "labs",
+      "type": "number",
+      "min": 8.9,
+      "max": 17.6,
+      "median": 13.2,
+      "valid_min": 4.55,
+      "valid_max": 21.950000000000003
+    },
+    {
+      "name": "K",
+      "label": "Potassium (mEq/L)",
+      "group": "labs",
+      "type": "number",
+      "min": 3.0,
+      "max": 6.6,
+      "median": 4.2,
+      "valid_min": 1.2000000000000002,
+      "valid_max": 8.399999999999999
+    },
+    {
+      "name": "Na",
+      "label": "Sodium (mEq/L)",
+      "group": "labs",
+      "type": "number",
+      "min": 128.0,
+      "max": 156.0,
+      "median": 141.0,
+      "valid_min": 114.0,
+      "valid_max": 170.0
+    },
+    {
+      "name": "WBC",
+      "label": "White blood cells (cells/mL)",
+      "group": "labs",
+      "type": "number",
+      "min": 3700.0,
+      "max": 18000.0,
+      "median": 7100.0,
+      "valid_min": 0.0,
+      "valid_max": 25150.0
+    },
+    {
+      "name": "Lymph",
+      "label": "Lymphocytes (%)",
+      "group": "labs",
+      "type": "number",
+      "min": 7.0,
+      "max": 60.0,
+      "median": 32.0,
+      "valid_min": 0.0,
+      "valid_max": 86.5
+    },
+    {
+      "name": "Neut",
+      "label": "Neutrophils (%)",
+      "group": "labs",
+      "type": "number",
+      "min": 32.0,
+      "max": 89.0,
+      "median": 60.0,
+      "valid_min": 3.5,
+      "valid_max": 117.5
+    },
+    {
+      "name": "PLT",
+      "label": "Platelets (1000/mL)",
+      "group": "labs",
+      "type": "number",
+      "min": 25.0,
+      "max": 742.0,
+      "median": 210.0,
+      "valid_min": 0.0,
+      "valid_max": 1100.5
+    },
+    {
+      "name": "EF-TTE",
+      "label": "Ejection fraction, echo (%)",
+      "group": "echo",
+      "type": "number",
+      "min": 15.0,
+      "max": 60.0,
+      "median": 50.0,
+      "valid_min": 0.0,
+      "valid_max": 82.5
+    },
+    {
+      "name": "Region RWMA",
+      "label": "Wall-motion abnormality regions (0-4)",
+      "group": "echo",
+      "type": "number",
+      "min": 0.0,
+      "max": 4.0,
+      "median": 0.0,
+      "valid_min": 0.0,
+      "valid_max": 6.0
+    },
+    {
+      "name": "VHD",
+      "label": "Valvular heart disease",
+      "group": "echo",
+      "type": "choice",
+      "choices": {
+        "None": 0,
+        "Mild": 1,
+        "Moderate": 2,
+        "Severe": 3
+      }
+    }
+  ],
+  "groups": [
+    "base",
+    "ecg",
+    "labs",
+    "echo"
+  ]
+}
