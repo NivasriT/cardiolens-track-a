@@ -17,10 +17,6 @@ app.add_middleware(
 ROOT = Path(__file__).resolve().parents[2]
 DISCLAIMER = "For decision support and educational use only. Not a substitute for formal diagnostic imaging or clinical judgement."
 
-def conf_label(lo, hi):
-	w = hi - lo
-	return "high" if w < 0.15 else "medium" if w < 0.30 else "low"
-
 @app.get("/health")
 def health():
 	return {"status": "ok"}
@@ -46,6 +42,13 @@ def metrics():
 		return json.load(open(metrics_path))
 	return {"status": "not ready"}
 
+@app.get("/ablation")
+def ablation():
+	ablation_path = ROOT / "ml" / "reports" / "ablation.json"
+	if ablation_path.exists():
+		return json.load(open(ablation_path))
+	return {"status": "not ready"}
+
 @app.post("/predict")
 def predict(req: PredictRequest):
 	try:
@@ -53,14 +56,14 @@ def predict(req: PredictRequest):
 		model = RiskModel()
 		groups = req.available_groups
 		preds = model.predict(req.patient, groups)
-		
+
 		def format_card(t):
-			v = preds.get(t, {"p": 0.0, "lo": 0.0, "hi": 0.0})
+			v = preds.get(t, {"p": 0.0, "lo": 0.0, "hi": 0.0, "confidence": "low"})
 			return {
 				"probability": v["p"],
 				"ci_low": v["lo"],
 				"ci_high": v["hi"],
-				"confidence": conf_label(v["lo"], v["hi"])
+				"confidence": v.get("confidence", "medium")
 			}
 
 		cad = format_card("CAD")
