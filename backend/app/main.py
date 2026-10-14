@@ -31,7 +31,7 @@ def feature_schema():
 @app.get("/sample-patients")
 def sample_patients():
 	sample_path = ROOT / "ml" / "reports" / "sample_patients.json"
-	if sample_path.exists():
+	if schema_path.exists():
 		return json.load(open(sample_path))
 	return []
 
@@ -72,7 +72,9 @@ def predict(req: PredictRequest):
 		explanations = {}
 		for t in ["CAD", "LAD", "LCX", "RCA"]:
 			raw_exp = model.explain(req.patient, groups, t)
-			explanations[t] = build_explanation(raw_exp)
+			parsed = build_explanation(raw_exp)
+			parsed["raw"] = raw_exp
+			explanations[t] = parsed
 
 		return {
 			"cad": cad,
