@@ -1,13 +1,22 @@
 import HeartBody from "./HeartBody";
 import CoronaryArtery from "./CoronaryArtery";
-import SceneParts from "./SceneParts";
+import * as ScenePartsModule from "./SceneParts";
 
-export default function HeartModel({ selected, onSelect }) {
+const ScenePartsComponent = ScenePartsModule.default || ScenePartsModule.SceneParts || ScenePartsModule.Parts;
+
+export default function HeartModel({ vessels = {}, selected, onSelect, showFlow }) {
   return (
     <group>
-      <HeartBody />
-      <CoronaryArtery selected={selected} onSelect={onSelect} />
-      <SceneParts />
+      {HeartBody && <HeartBody />}
+      {CoronaryArtery && (
+        <CoronaryArtery
+          vessels={vessels}
+          selected={selected}
+          onSelect={onSelect}
+          showFlow={showFlow}
+        />
+      )}
+      {ScenePartsComponent && <ScenePartsComponent />}
     </group>
   );
 }
