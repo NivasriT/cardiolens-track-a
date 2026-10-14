@@ -1,3 +1,8 @@
-export default function App() {
-  return <div style={{padding: 24}}>CardioLens</div>;
+
+import HeartViewer from "./components/HeartViewer/HeartViewer.jsx";
+
+function App() {
+  return <HeartViewer />;
 }
+
+export default App;
