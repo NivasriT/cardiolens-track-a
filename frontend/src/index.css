@@ -1,5 +1,5 @@
 :root {
-  /* Cream & Soft Warm Palette from Reference */
+  /* Cream & Soft Warm Palette */
   --bg: #f7f3e9;
   --surface: #ffffff;
   --surface-muted: #efeadd;
@@ -16,7 +16,7 @@
   --pastel-blue: #a2c4e8;
   --accent: #1a1918;
 
-  /* Risk assessment spectrum */
+  /* Risk spectrum */
   --risk-low: #7fa655;
   --risk-mid: #d6a13c;
   --risk-high: #e06c75;
@@ -25,7 +25,7 @@
   --font-body: 'Plus Jakarta Sans', sans-serif;
   --font-mono: 'IBM Plex Mono', monospace;
 
-  /* Rounded aesthetics */
+  /* Shapes */
   --radius-card: 20px;
   --radius-pill: 999px;
   --transition: all 0.2s ease-in-out;
@@ -66,13 +66,10 @@ button:hover {
   opacity: 0.9;
 }
 
-button:active {
-  transform: scale(0.98);
-}
-
 input, select {
   font-family: var(--font-body);
   border-radius: 12px;
+  transition: var(--transition);
 }
 
 input:focus, select:focus {

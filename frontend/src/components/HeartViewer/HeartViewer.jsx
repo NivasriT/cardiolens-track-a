@@ -208,7 +208,7 @@ export default function HeartViewer({ data = sampleData }) {
             <Lightformer form="rect" intensity={2} position={[5, 0, -3]} rotation-y={-Math.PI / 2} scale={[6, 3, 1]} color="#ffb199" />
           </Environment>
 
-          <group ref={attachFrame}>
+          <group ref={attachFrame} scale={1.25}>
             <Bvh firstHitOnly>
               <HeartBody
                 xray={opts.xray}
