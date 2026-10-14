@@ -108,7 +108,7 @@ export default function App() {
             </div>
           </div>
 
-          {/* Full-Width Bottom Section: SHAP Clinical Interpretation */}
+          {/* Bottom Full-Width Panel */}
           <ExplanationPanel result={result} selected={selected} patientData={patientData} />
         </main>
       )}
