@@ -17,25 +17,33 @@ export default function App() {
   const [selected, setSelected] = useState('CAD');
   const [activeGroups, setActiveGroups] = useState(['ecg']);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [patientData, setPatientData] = useState({
+    age: 58, sex: 1, cp: 2, trestbps: 140, chol: 240, fbs: 0,
+    restecg: 1, thalach: 150, exang: 0, oldpeak: 1.5, slope: 2, ca: 0, thal: 2
+  });
 
-  const handleRun = async (patientData, groups) => {
+  const handleRun = async (data = patientData, groups = activeGroups) => {
     setLoading(true);
-    setError('');
-    setActiveGroups(groups);
     try {
-      const res = await predict(patientData, groups);
+      const res = await predict(data, groups);
       setResult(res);
     } catch (err) {
-      console.error('Failed to run prediction:', err);
-      setError(err.message || 'The server is waking up or unavailable. Please try again in a moment.');
+      console.error('Failed to run prediction', err);
     } finally {
       setLoading(false);
     }
   };
 
+  const handleToggleGroup = (groupId) => {
+    const updated = activeGroups.includes(groupId)
+      ? activeGroups.filter((g) => g !== groupId)
+      : [...activeGroups, groupId];
+    setActiveGroups(updated);
+    handleRun(patientData, updated);
+  };
+
   useEffect(() => {
-    handleRun({}, ['ecg']);
+    handleRun();
   }, []);
 
   return (
@@ -48,14 +56,9 @@ export default function App() {
         justifyContent: 'space-between',
         alignItems: 'center'
       }}>
-        <div>
-          <h1 style={{ fontSize: '28px', color: 'var(--ink)', fontWeight: 800, margin: 0 }}>
-            CardioLens
-          </h1>
-          <p style={{ fontSize: '14px', color: 'var(--ink-muted)', fontWeight: 600, marginTop: '2px' }}>
-            3D Cardiac Risk & Uncertainty-Aware Assessment
-          </p>
-        </div>
+        <h1 style={{ fontSize: '28px', color: 'var(--ink)', fontWeight: 800 }}>
+          CardioLens
+        </h1>
 
         <nav style={{ display: 'flex', gap: '8px', background: 'var(--surface-muted)', padding: '6px', borderRadius: 'var(--radius-pill)' }}>
           {['dashboard', 'metrics', 'about'].map((t) => (
@@ -83,36 +86,20 @@ export default function App() {
       {tab === 'about' && <AboutPage />}
 
       {tab === 'dashboard' && (
-        <main style={{ padding: '0 32px 32px 32px', flex: 1 }}>
-          <EvidenceLadder activeGroups={activeGroups} />
+        <main style={{ padding: '0 32px 32px 32px', flex: 1, display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          <EvidenceLadder activeGroups={activeGroups} onToggleGroup={handleToggleGroup} />
 
-          {error && (
-            <div style={{
-              background: '#f8d7da',
-              border: '1px solid #f5c6cb',
-              color: '#721c24',
-              padding: '12px 16px',
-              borderRadius: '12px',
-              marginBottom: '16px',
-              fontSize: '13px',
-              fontWeight: 600
-            }}>
-              ⚠️ {error}
-            </div>
-          )}
-
+          {/* Top 3-Column Layout */}
           <div style={{
             display: 'grid',
             gridTemplateColumns: '340px 1fr 320px',
-            gap: '24px',
-            marginTop: '20px'
+            gap: '24px'
           }}>
-            <PatientPanel onRun={handleRun} loading={loading} />
+            <PatientPanel onRun={handleRun} loading={loading} patientData={patientData} setPatientData={setPatientData} />
             
             <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
               <ViewerPanel vessels={result?.vessels} selected={selected} onSelect={setSelected} />
               <VitalsPanel vitals={result?.vitals} />
-              <ExplanationPanel result={result} selected={selected} />
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
@@ -120,6 +107,9 @@ export default function App() {
               <NextBestTest nextBestTest={result?.next_best_test} />
             </div>
           </div>
+
+          {/* Full-Width Bottom Section: SHAP Clinical Interpretation */}
+          <ExplanationPanel result={result} selected={selected} patientData={patientData} />
         </main>
       )}
     </div>
